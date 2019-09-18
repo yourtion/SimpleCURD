@@ -1,0 +1,22 @@
+{
+  "name": "simple-curd-server",
+  "version": "1.0.0",
+  "description": "A simple curd UI for Node.js",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/yourtion/SimpleCURD.git"
+  },
+  "keywords": [
+    "curd"
+  ],
+  "author": "Yourtion <yourtion@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/yourtion/SimpleCURD/issues"
+  },
+  "homepage": "https://github.com/yourtion/SimpleCURD#readme"
+}
