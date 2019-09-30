@@ -73,7 +73,6 @@ function errorHandler(err) {
         source,
       });
     } else {
-      global.$ && $.sentry(err);
       logger.error(err);
     }
     throw errors.dataBaseError();

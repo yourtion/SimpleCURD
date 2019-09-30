@@ -4,7 +4,7 @@
  * @author Yourtion Guo <yourtion@gmail.com>
  */
 const http = require('http');
-const { mysql, redis, log4js, config, pm2 } = require('./global');
+const { mysql, redis, log4js, config } = require('./global');
 const app = require('./app');
 const { reGenData } = require('./init');
 
@@ -23,18 +23,12 @@ reGenData().then(() => {
 // eslint-disable-next-line no-console
 }).catch(console.error);
 
-pm2.pmx.action('data:reload', (reply) => {
-  reGenData()
-    .then(() => reply({ success: true }))
-    .catch(() => reply({ success: false }));
-});
-
 process.on('uncaughtException', function (err) {
-  $.sentry(err);
+  console.error(err);
 });
 
 process.on('unhandledRejection', function (err) {
-  $.sentry(err);
+  console.error(err);
 });
 
 // Graceful shutdown

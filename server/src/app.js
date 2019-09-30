@@ -8,26 +8,10 @@ global.$ = {};
 global._ = require('lodash');
 const express = require('express-coroutine')(require('express'));
 const bodyParser = require('body-parser');
-const compress = require('compression');
 const app = express();
 const router = new express.Router();
 
 const { log4js, errors, config } = require('./global');
-let Sentry;
-if(config.sentry) {
-  Sentry = require('@sentry/node');
-  Sentry.init({
-    dsn: config.sentry,
-    integrations(integrations) {
-      return integrations.filter(integration => integration.name !== 'OnUncaughtException');
-    },
-  });
-}
-$.sentry = function (err) {
-  // eslint-disable-next-line no-console
-  console.error(err);
-  if(Sentry) Sentry.captureException(err);
-};
 const { middlewares } = require('./lib');
 const logger = log4js.getLogger();
 
@@ -35,7 +19,6 @@ const apiService = require('./api');
 const api = apiService.api;
 
 // 静态文件
-app.use(compress());
 app.use(express.static('static'));
 app.use('/sdk', express.static('sdk'));
 
@@ -93,9 +76,6 @@ router.use((err, req, res, next) => {
     res.error(errors.internalError());
   } else {
     res.error(err);
-  }
-  if (err.log || err.log === undefined) {
-    $.sentry(err);
   }
   next();
 });
