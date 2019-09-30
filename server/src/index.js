@@ -15,7 +15,6 @@ const HOST = config.host || process.env.HOST || '127.0.0.1';
 
 reGenData().then(() => {
   return server.listen(PORT, HOST, function () {
-    pm2.initMetric([ 'tables', 'projects' ]);
     // eslint-disable-next-line no-console
     console.log(`API Server is listening on ${ HOST }:${ PORT }`);
     process.send && process.send('ready');

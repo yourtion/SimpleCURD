@@ -44,7 +44,6 @@ for (const type of logTypes) {
 log4js.configure({
   appenders: debug ? debugLogger : fileLogger,
   categories,
-  pm2: process.env.NODE_ENV === 'production',
 });
 
 module.exports = log4js;

@@ -5,27 +5,22 @@
 const { log4js, errors, config } = require('../global');
 const { schemaUtils } = require('../lib');
 const logger = log4js.getLogger();
-const pm2 = require('../global/pm2');
 
 exports.info = (req, res) => {
   logger.trace('collectInfo', req.$params);
-  pm2.collectMetric('info').mark();
   const { table } = req.$params;
   const schema = $.tables[table];
   if (!schema) throw errors.notFoundError('schema');
-  pm2.tableMetric(table).mark();
   res.success(schema);
 };
 
 exports.add = function* (req, res) {
   logger.trace('collectAdd', req.$params);
-  pm2.collectMetric('add').mark();
   const { table, data, update, info } = req.$params;
   if (!$.models) throw errors.internalError('initing');
   const model = $.models[table];
   const tableInfo = $.tables[table];
   if (!model || !tableInfo) throw errors.notFoundError('table');
-  pm2.tableMetric(table).mark();
   delete data[tableInfo.primary];
   const out = schemaUtils.schemaCheaker(data, tableInfo.schema, [tableInfo.primary]);
   try {
@@ -44,14 +39,12 @@ exports.add = function* (req, res) {
 
 exports.edit = function* (req, res) {
   logger.trace('collectEdit', req.$params);
-  pm2.collectMetric('edit').mark();
   const { table, field, data } = req.$params;
   if (!$.models) throw errors.internalError('initing');
   const model = $.models[table];
   const tableInfo = $.tables[table];
   if (!model || !tableInfo) throw errors.notFoundError('table');
   if (!tableInfo.is_update) throw errors.exceInvalidError('can not update');
-  pm2.tableMetric(table).mark();
   const out = schemaUtils.schemaCheaker(data, tableInfo.schema, [], true);
   if (Object.keys(out) === 0) throw errors.invalidParameterError('data empty');
   const query = {};
@@ -68,13 +61,11 @@ exports.edit = function* (req, res) {
 
 exports.get = function* (req, res) {
   logger.trace('collectGet', req.$params);
-  pm2.collectMetric('get').mark();
   const { table, field, data, rank, count } = req.$params;
   if (!$.models) throw errors.internalError('initing');
   const model = $.models[table];
   const tableInfo = $.tables[table];
   if (!model || !tableInfo) throw errors.notFoundError('table');
-  pm2.tableMetric(table).mark();
   const query = {};
   query[field] = data;
   if (query[field] === undefined) throw errors.invalidParameterError('field');
@@ -97,7 +88,6 @@ exports.get = function* (req, res) {
 
 exports.page = function* (req, res) {
   logger.trace('collectPage', req.$params);
-  pm2.collectMetric('page').mark();
   const { table } = req.$params;
   const { $count = true, $fields } = req.query;
   const c = $count === true || $count === 'true';
@@ -105,7 +95,6 @@ exports.page = function* (req, res) {
   const model = $.models[table];
   const tableInfo = $.tables[table];
   if (!model || !tableInfo) throw errors.notFoundError('table');
-  pm2.tableMetric(table).mark();
   try {
     const query = {};
     const keys = Object.keys(tableInfo.schema);
@@ -147,14 +136,12 @@ exports.page = function* (req, res) {
 
 exports.incr = function* (req, res) {
   logger.trace('collectIncr', req.$params);
-  pm2.collectMetric('incr').mark();
   const { table, primaryName, primary, field, count } = req.$params;
   if (!$.models) throw errors.internalError('initing');
   const model = $.models[table];
   const tableInfo = $.tables[table];
   if (!model || !tableInfo) throw errors.notFoundError('table');
   if (!tableInfo.is_update) throw errors.exceInvalidError('can not update');
-  pm2.tableMetric(table).mark();
   try {
     const primaryN = primaryName || tableInfo.primary;
     yield model.updateByField({ [primaryN]: primary }, { $f: `${field} = ${field} + ${count}` }, true);
