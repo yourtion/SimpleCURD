@@ -10,10 +10,6 @@ const log4js = require('./log4js');
 const config = require('../../config');
 const logger = log4js.getLogger('redis');
 
-Redis.Promise.onPossiblyUnhandledRejection((error) => {
-  logger.error(error);
-});
-
 const redis = new Redis(config.redis);
 
 redis.on('connect', () => {
