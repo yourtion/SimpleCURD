@@ -11,7 +11,7 @@ module.exports = (api) => {
   api.get('/collect/:table')
     .group('Collect')
     .title('数据表信息')
-    .param({
+    .params({
       table: helper.build(TYPES.String, '表名', true),
     })
     .before(middlewares.cros)
@@ -20,7 +20,7 @@ module.exports = (api) => {
   api.post('/collect/:table')
     .group('Collect')
     .title('创建收集数据')
-    .param({
+    .params({
       table: helper.build(TYPES.String, '表名', true),
     })
     .body({
@@ -34,7 +34,7 @@ module.exports = (api) => {
   api.put('/collect/:table')
     .group('Collect')
     .title('修改收集数据')
-    .param({
+    .params({
       table: helper.build(TYPES.String, '表名', true),
     })
     .body({
@@ -47,7 +47,7 @@ module.exports = (api) => {
   api.get('/collect/:table/list')
     .group('Collect')
     .title('获取收集数据列表')
-    .param({
+    .params({
       table: helper.build(TYPES.String, '表名', true),
     })
     .query(helper.PAGEING)
@@ -58,7 +58,7 @@ module.exports = (api) => {
   api.get('/collect/:table/item')
     .group('Collect')
     .title('获取收集数据条目')
-    .param({
+    .params({
       table: helper.build(TYPES.String, '表名', true),
     })
     .query({
@@ -73,7 +73,7 @@ module.exports = (api) => {
   api.post('/collect/:table/incr')
     .group('Collect')
     .title('获取收集数据列自增')
-    .param({
+    .params({
       table: helper.build(TYPES.String, '表名', true),
     })
     .body({

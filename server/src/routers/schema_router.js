@@ -32,7 +32,7 @@ module.exports = (api) => {
   api.post('/scheam/:table')
     .group('Schema')
     .title('添加表格数据')
-    .param({
+    .params({
       table: helper.build(TYPES.String, '表名', true),
     })
     .body({
@@ -44,7 +44,7 @@ module.exports = (api) => {
   api.put('/scheam/:table')
     .group('Schema')
     .title('修改表格数据')
-    .param({
+    .params({
       table: helper.build(TYPES.String, '表名', true),
     })
     .body({
@@ -57,7 +57,7 @@ module.exports = (api) => {
   api.delete('/scheam/:table')
     .group('Schema')
     .title('删除表格数据')
-    .param({
+    .params({
       table: helper.build(TYPES.String, '表名', true),
     })
     .query({
