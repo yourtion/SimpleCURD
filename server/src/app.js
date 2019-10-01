@@ -31,8 +31,6 @@ router.use(log4js.connectLogger(log4js.getLogger('express'), {
 }));
 
 app.use('/api', router);
-const faas = require("./faas");
-app.use('/faas/:name/:0', faas);
 
 // 路由处理
 router.use(bodyParser.json());
