@@ -65,7 +65,7 @@ router.use(function (req, res, next) {
 });
 
 require('./routers')(router, api);
-apiService.bindRouter(router);
+apiService.bindRouter(router, apiService.checkerExpress);
 
 router.use((err, req, res, next) => {
   if (config.env === 'production' && !err.show) {
