@@ -6,8 +6,8 @@
  */
 
 module.exports = {
-  adminModel: require('./dbcurd_admin'),
-  tableModel: require('./dbcurd_table'),
-  projectModel: require('./dbcurd_project'),
-  projectRoleModel: require('./dbcurd_project_role'),
+  adminModel: require('./scurd_admin'),
+  tableModel: require('./scurd_table'),
+  projectModel: require('./scurd_project'),
+  projectRoleModel: require('./scurd_project_role'),
 };

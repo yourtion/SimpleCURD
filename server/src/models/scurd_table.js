@@ -1,21 +1,21 @@
 'use strict';
 
 /**
-* @file dbcurd_table model
+* @file Scurd_table model
 * @author Yourtion Guo <yourtion@gmail.com>
 */
 
 const Base = require('./base');
 
-class DbcurdTable extends Base {
+class ScurdTable extends Base {
 
   constructor(options) {
     const opt = Object.assign({
       fields: [ 'id', 'name', 'project_id', 'is_offline', 'is_update', 'note', 'created_at', 'updated_at' ],
     }, options);
-    super('dbcurd_table', opt);
+    super('Scurd_table', opt);
   }
 
 }
 
-module.exports = new DbcurdTable();
+module.exports = new ScurdTable();

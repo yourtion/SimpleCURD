@@ -1,7 +1,7 @@
 'use strict';
 
 /**
-* @file dbcurd_project schema 项目表
+* @file Scurd_project schema 项目表
 * @author Yourtion Guo <yourtion@gmail.com>
 */
 

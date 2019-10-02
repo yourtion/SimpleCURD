@@ -1,20 +1,20 @@
 'use strict';
 
 /**
-* @file dbcurd_project_role model
+* @file Scurd_project_role model
 * @author Yourtion Guo <yourtion@gmail.com>
 */
 
 const Base = require('./base');
 
-class DbcurdProjectRole extends Base {
+class ScurdProjectRole extends Base {
 
   constructor(options) {
     const opt = Object.assign({
       fields: [ 'project_id', 'admin_id' ],
     }, options);
-    super('dbcurd_project_role', opt);
+    super('Scurd_project_role', opt);
   }
 }
 
-module.exports = new DbcurdProjectRole();
+module.exports = new ScurdProjectRole();

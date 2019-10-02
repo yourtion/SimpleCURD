@@ -1,7 +1,7 @@
 'use strict';
 
 /**
-* @file dbcurd_admin schema 管理员表
+* @file Scurd_admin schema 管理员表
 * @author Yourtion Guo <yourtion@gmail.com>
 */
 

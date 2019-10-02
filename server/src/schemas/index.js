@@ -6,7 +6,7 @@
  */
 
 module.exports = {
-  adminSchema: require('./dbcurd_admin'),
-  tableSchema: require('./dbcurd_table'),
-  projectSchema: require('./dbcurd_project'),
+  adminSchema: require('./scurd_admin'),
+  tableSchema: require('./scurd_table'),
+  projectSchema: require('./scurd_project'),
 };

@@ -1,7 +1,7 @@
 'use strict';
 
 /**
-* @file dbcurd_table schema 数据表
+* @file Scurd_table schema 数据表
 * @author Yourtion Guo <yourtion@gmail.com>
 */
 
