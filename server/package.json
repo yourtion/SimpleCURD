@@ -4,7 +4,13 @@
   "description": "A simple curd UI for Node.js",
   "main": "src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "export NODE_ENV=production && node src/index.js",
+    "dev": "export NODE_ENV=dev && nodemon --watch src src/index.js",
+    "lint": "eslint src config test --fix",
+    "test": "npm run lint && export NODE_ENV=test && mocha --exit test/**/test-*.js",
+    "cover": "export NODE_ENV=test && istanbul cover _mocha test/**/test*.js -- -t 60000 --exit && open coverage/lcov-report/index.html",
+    "deploy": "npm i --registry=https://registry.npm.taobao.org --production && pm2 startOrGracefulReload app.json",
+    "logs": "tail -F ./logs/**/*.log"
   },
   "dependencies": {
     "@blueshit/squel": "^1.1.0",

@@ -6,6 +6,7 @@ module.exports = {
     'valid-jsdoc': 'off',
     'no-inline-comments': 'off',
     'promise/avoid-new': 'off',
+    'require-atomic-updates': 'off',
   },
   globals: {
     '$': false,
