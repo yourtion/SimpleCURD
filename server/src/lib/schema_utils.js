@@ -20,9 +20,9 @@ exports.schemaCheaker = (input, schema, exclude = [], isUpdate = false) => {
         continue;
       }
     }
-    
+
     const type = apiService.type.get(options.type);
-    
+
     // 如果类型有 parser 则先执行
     if (type.parser) {
       // debug(`param ${ name } run parser`);
@@ -30,7 +30,7 @@ exports.schemaCheaker = (input, schema, exclude = [], isUpdate = false) => {
     }
 
     // 如果类型有 checker 则检查
-    if (!type.checker(value, options.params)) {
+    if (!type.options.checker(value, options.params)) {
       // debug(`param ${ name } run checker`);
       let msg = `'${ name }' should be valid ${ options.type }`;
       if (options.params) {

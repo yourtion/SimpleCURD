@@ -281,7 +281,7 @@ describe('API - Project + Table + Schema', () => {
       .input({
         field: share.sPrimary,
         data: share.newCollectId,
-        rank: true,
+        rank: share.sPrimary,
         count: true,
       })
       .takeExample('获取收集数据条目')
