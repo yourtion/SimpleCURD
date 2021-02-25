@@ -26,6 +26,17 @@ const GROUPS = {
 const apiService = new API({
   info: INFO,
   groups: GROUPS,
+  docs: {
+    all: true,
+    markdown: true,
+    wiki: './',
+    index: true,
+    home: true,
+    swagger: true,
+    postman: true,
+    json: true,
+    axios: true,
+  },
   path: require('path').resolve(__dirname, 'routers'),
   missingParameterError: errors.missingParameterError,
   invalidParameterError: errors.invalidParameterError,
