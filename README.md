@@ -1,7 +1,20 @@
 # SimpleCURD
 
+SimpleCURD 是一个简化后端开发，通过管理界面添加相应的数据表即可自动生成前端提交数据的API，以及后台查看管理数据界面的管理工具。
+
+系统使用 ERest 开发，有完善测试代码（[test](https://github.com/yourtion/SimpleCURD/tree/master/server/test/api)）与自动生成的文档 [wiki](https://github.com/yourtion/SimpleCURD/wiki/)
 ## 功能特性
 
+将已存在的数据表在后台添加到系统中，无需任何开发部署，即可获得：
+
+1. 为运营相关人员提供查看下载数据的列表与编辑页面（编辑功能按照数据表字段自动生成）
+2. 为前端提供操作表数据的 CURD API 接口（https://github.com/yourtion/SimpleCURD/wiki/collect）：
+  - 获取数据表信息
+  - 创建收集数据
+  - 修改收集数据
+  - 获取收集数据列表
+  - 获取收集数据条目
+  - 收集数据列自增
 ## 安装部署
 
 ### 开发
