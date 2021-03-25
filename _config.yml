@@ -1,1 +1,4 @@
 theme: jekyll-theme-tactile
+
+title: SimpleCURD
+description: 简化后端开发，快速生成 CURD 接口与管理界面
