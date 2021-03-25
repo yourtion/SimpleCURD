@@ -8,8 +8,9 @@ SimpleCURD 是一个简化后端开发，通过管理界面添加相应的数据
 将已存在的数据表在后台添加到系统中，无需任何开发部署，即可获得：
 
 1. 为运营相关人员提供查看下载数据的列表与编辑页面（编辑功能按照数据表字段自动生成）
-2. 为前端提供操作表数据的 CURD API 接口（[wiki/collect](https://github.com/yourtion/SimpleCURD/wiki/collect)）：
-3. 为不同项目提供不同数据的权限管控（查看、可编辑）
+2. 为前端提供操作表数据的 CURD API 接口（[wiki/collect](https://github.com/yourtion/SimpleCURD/wiki/collect)）
+3. 为前端直接提供SDK（[wiki/sdk](https://github.com/yourtion/SimpleCURD/wiki/SimpleCURD-SDK)）
+4. 为不同项目提供不同数据的权限管控（查看、可编辑）
 ## 安装部署
 
 ### 开发
@@ -54,6 +55,29 @@ CREATE TABLE `ab_test` (
 ```
 
 ![](screenshots/screen5.png)
+
+### SDK 使用
+
+```javascript
+// 初始化
+var client = new DBCURD("test_curd");
+// 获取信息
+client.info(console.log);
+// 获取列表
+client.list({ page: 2 }, console.log)
+// 创建数据
+client.create({
+	username: "Yourtion",
+}, console.log)
+// 更新数据
+client.update(23248, { username: "Yourtion2" }, console.log)
+// 获取单条记录
+client.get(23248, console.log)
+// 获取记录和排名
+client.rank(23248, "id", console.log)
+// 数据记录自增
+client.incr(23248, "weight", console.log)
+```
 
 ### 界面截图
 

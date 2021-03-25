@@ -1,0 +1,24 @@
+<html>
+
+<head>
+  <script src="./curd.js"></script>
+</head>
+
+<body>
+  <script>
+    var client = new CURD("ab_test");
+    client.info(console.log);
+    client.list({ limit: 2, addtion: { num: 1 } }, console.log)
+    client.page({ pageCount: 2 }, console.log)
+    client.create({
+      str: "Yourtion",
+      num: 123456,
+    }, console.log)
+    client.update(1, { str: "Yourtion2" }, console.log)
+    client.get(1, console.log)
+    client.rank(1, "id", console.log)
+    client.incr(1, "num", console.log)
+  </script>
+</body>
+
+</html>
