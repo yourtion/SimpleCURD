@@ -1,37 +1,40 @@
-## Welcome to GitHub Pages
+## SimpleCURD
 
-You can use the [editor on GitHub](https://github.com/yourtion/SimpleCURD/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
+SimpleCURD 是一个简化后端开发，通过管理界面添加相应的数据表即可自动生成前端提交数据的API，以及后台查看管理数据界面的管理工具。
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+系统使用 ERest 开发，有完善测试代码（[test/api](https://github.com/yourtion/SimpleCURD/tree/master/server/test/api)）与自动生成的文档 [wiki](https://github.com/yourtion/SimpleCURD/wiki/)
 
-### Markdown
+## 功能特性
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+将已存在的数据表在后台添加到系统中，无需任何开发部署，即可获得：
 
-```markdown
-Syntax highlighted code block
+1. 为运营相关人员提供查看下载数据的列表与编辑页面（编辑功能按照数据表字段自动生成）
+2. 为前端提供操作表数据的 CURD API 接口（[wiki/collect](https://github.com/yourtion/SimpleCURD/wiki/collect)）
+3. 为前端直接提供SDK（[wiki/sdk](https://github.com/yourtion/SimpleCURD/wiki/SimpleCURD-SDK)）
+4. 为不同项目提供不同数据的权限管控（查看、可编辑）
+## 安装部署
 
-# Header 1
-## Header 2
-### Header 3
+### 开发
 
-- Bulleted
-- List
+```bash
+$ cd admin-web && npm run dev
+$ cd server && npm run dev
+```
+### 部署
 
-1. Numbered
-2. List
+新建数据库并建立表结构（在 `setup` 目录中的 `sql` 文件）
 
-**Bold** and _Italic_ and `Code` text
+部署服务端，上传 `server` 文件夹到服务器上（已安装 Node.js 和 pm2），执行：
 
-[Link](url) and ![Image](src)
+```bash
+$ npm run deploy
 ```
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+构建前端 构建后上传到 `server` 所在位置的 `static` 文件夹中的 `admin` 目录（也可以使用其他静态文件服务器）
 
-### Jekyll Themes
+```bash
+$ cd admin-web && npm install && npm run build
+$ npm run deploy
+```
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/yourtion/SimpleCURD/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+默认用户名密码：admin / 123456
